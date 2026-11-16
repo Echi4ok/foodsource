@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-16",
+  "categories": [
+    {"id": "ingredients", "label": "Пищевые ингредиенты"},
+    {"id": "frozen", "label": "Замороженные продукты"},
+    {"id": "packaging", "label": "Пищевая упаковка"},
+    {"id": "food", "label": "Продукты оптом"}
+  ],
+  "regions": [
+    {"id": "ru", "label": "Россия"},
+    {"id": "city-524901", "label": "Москва", "parent_id": "ru"},
+    {"id": "sverdlovsk-region", "label": "Свердловская область", "parent_id": "ru"},
+    {"id": "ekaterinburg", "label": "Екатеринбург", "parent_id": "sverdlovsk-region"},
+    {"id": "tatarstan", "label": "Республика Татарстан", "parent_id": "ru"},
+    {"id": "kazan", "label": "Казань", "parent_id": "tatarstan"}
+  ],
+  "suppliers": [
+    {
+      "id": "demo-cup-alpha",
+      "name": "Демо · Стакан Альфа",
+      "description": "Учебная карточка поставщика бумажных стаканов и крышек для кофеен.",
+      "category_ids": ["packaging"],
+      "region_id": "ekaterinburg",
+      "service_region_ids": ["sverdlovsk-region"],
+      "products": ["Бумажные стаканы", "Крышки для стаканов"],
+      "contacts": {"email": "cups-alpha@example.invalid"},
+      "minimum_order": "от 500 шт.",
+      "price": "от 5 ₽/шт. за 250 мл",
+      "documents": "Учебный пример декларации соответствия",
+      "delivery": "Самовывоз или доставка по Екатеринбургу"
+    },
+    {
+      "id": "demo-cup-beta",
+      "name": "Демо · Стакан Бета",
+      "description": "Учебная карточка мастерской бумажной тары для горячих напитков.",
+      "category_ids": ["packaging"],
+      "region_id": "ekaterinburg",
+      "products": ["Бумажные стаканы", "Держатели для стаканов"],
+      "contacts": {"email": "cups-beta@example.invalid"},
+      "minimum_order": "от 1000 шт.",
+      "price": "от 4,50 ₽/шт. за 250 мл"
+    },
+    {
+      "id": "demo-cup-gamma",
+      "name": "Демо · Стакан Гамма",
+      "description": "Учебная карточка производителя бумажной тары. Стоимость уточняется у менеджера.",
+      "category_ids": ["packaging"],
+      "region_id": "ekaterinburg",
+      "products": ["Бумажные стаканы", "Бумажные пакеты"],
+      "contacts": {"email": "cups-gamma@example.invalid"},
+      "delivery": "Самовывоз"
+    },
+    {
+      "id": "demo-glass",
+      "name": "Демо · Банки Дельта",
+      "description": "Учебная карточка производителя стеклянных банок. Банки подходят для мёда и варенья.",
+      "category_ids": ["packaging"],
+      "region_id": "city-524901",
+      "service_region_ids": ["ekaterinburg"],
+      "products": ["Стеклянные банки"],
+      "contacts": {"email": "glass@example.invalid"},
+      "delivery": "Отгрузка транспортной компанией в Екатеринбург"
+    },
+    {
+      "id": "demo-honey",
+      "name": "Демо · Пасека Эпсилон",
+      "description": "Учебная карточка поставщика пищевых ингредиентов и продукции пчеловодства.",
+      "category_ids": ["food", "ingredients"],
+      "region_id": "city-524901",
+      "products": ["Липовый мёд", "Гречишный мёд"],
+      "contacts": {"email": "honey@example.invalid"},
+      "minimum_order": "от 20 кг"
+    },
+    {
+      "id": "demo-coffee",
+      "name": "Демо · Кофе Дзета",
+      "description": "Учебная карточка оптового поставщика обжаренного кофе для кофеен.",
+      "category_ids": ["food"],
+      "region_id": "city-524901",
+      "products": ["Зерновой кофе"],
+      "contacts": {"email": "coffee@example.invalid"}
+    },
+    {
+      "id": "demo-berries",
+      "name": "Демо · Ягоды Эта",
+      "description": "Учебная карточка поставщика замороженных ягод для пекарен и кондитерских.",
+      "category_ids": ["frozen"],
+      "region_id": "kazan",
+      "products": ["Замороженная малина", "Замороженная клубника"],
+      "contacts": {"email": "berries@example.invalid"},
+      "minimum_order": "от 10 кг"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+__pycache__/
+.venv/
+.pytest_cache/
+.ruff_cache/
+node_modules/
+dist/
+.vercel/
+.env
+.env.*
+*.log
+test-results/
+playwright-report/
+__screenshots__/
+backend/data/*.sqlite3*

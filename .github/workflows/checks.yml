@@ -1,0 +1,39 @@
+name: FoodSource checks
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
+        with:
+          version: '0.11.19'
+          python-version: '3.12'
+      - name: Build frontend
+        run: |
+          npm ci --prefix frontend
+          npm run build --prefix frontend
+      - name: Test and lint backend
+        run: |
+          uv --directory backend run --locked --group ingest pytest -q
+          uv --directory backend run --locked --group ingest ruff check . ../scripts
+          uv --directory backend run --locked --group ingest ruff format --check . ../scripts
+      - name: Verify launch on a synthetic snapshot
+        run: uv run --project backend --locked python -m scripts.demo --check
+      - name: Browser checks in Chromium
+        run: |
+          npm exec --prefix frontend -- playwright install --with-deps --only-shell chromium
+          npm run test:e2e --prefix frontend
